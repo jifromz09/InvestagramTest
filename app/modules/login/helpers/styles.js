@@ -15,6 +15,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 7
   },
   formItem: {
     width: '95%',
@@ -41,21 +42,20 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    width: wp('70%'),
-    height: hp('40%'),
+    width: wp('60%'),
+    height: hp('30%'),
   },
   logoContiner: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   icon: {
     color: '#039BE5',
   },
   loginBtn: {
     marginTop: 10,
-    width: wp('95%'),
-    height: hp('6%'),
+    width: '95%',
     alignSelf: 'center',
     //backgroundColor: "#039BE5",
     justifyContent: 'center',

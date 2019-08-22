@@ -6,7 +6,6 @@ import {
   View,
   Image,
   Alert,
-  ToastAndroid,
 } from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -69,12 +68,12 @@ class LoginScreen extends Component {
     return (
       <Root>
         <SafeAreaView style={styles.mainContainer}>
-          {/* <View style={styles.logoContiner}>
+          <View style={styles.logoContiner}>
             <Image
-              source={require("../../assets/images/logo/logo.png")}
+              source={require("../../assets/img/logo.png")}
               style={styles.logo}
             />
-          </View> */}
+          </View>
           {this.props.requestToken.isFetching ? (
             <View style={styles.spinnerContainer}>
               <Spinner color={'#039BE5'} />
