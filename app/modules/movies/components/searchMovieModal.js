@@ -37,7 +37,6 @@ class SearchMovieModalScreen extends Component {
           year: this.state.year,
         };
         this.props.searchMovieRequest(params).then(res => {
-          console.log(res);
           res.value && res.value.results.length
             ? this.props.navigation.navigate('SearchResultList', {movies: res.value.results})
             : this.searchMovieResult('SEARCH', 'No movie(s) found!');

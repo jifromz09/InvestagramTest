@@ -1,9 +1,6 @@
 import React from 'react';
 import {Text, Body} from 'native-base';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
+import {toogleText} from '../../commonComponents/movies/textToogle';
 import ViewMoreText from 'react-native-view-more-text';
 export const movieOverview = data => {
   return (
@@ -16,28 +13,9 @@ export const movieOverview = data => {
         }}>
         Overview
       </Text>
-      <ViewMoreText
-        numberOfLines={5}
-        renderViewMore={renderViewMore}
-        renderViewLess={renderViewLess}
-        textStyle={{textAlign: 'justify'}}>
-        <Text>{data.overview}</Text>
-      </ViewMoreText>
+      {toogleText(data.overview)}
     </Body>
   );
 };
 
-const renderViewMore = onPress => {
-  return (
-    <Text style={{color: '#0091EA', marginTop: 10,  fontSize: 12}} onPress={onPress}>
-      Read more...
-    </Text>
-  );
-};
-const renderViewLess = onPress => {
-  return (
-    <Text style={{color: '#0091EA', marginTop: 10,  fontSize: 12}} onPress={onPress}>
-      Read less...
-    </Text>
-  );
-};
+

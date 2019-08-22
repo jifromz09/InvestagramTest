@@ -20,12 +20,7 @@ import {movieTimeLength} from '../components/movieLength';
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 
-export default class MovieItem extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount = () => {};
+export default class MovieItem extends React.PureComponent {
 
   render() {
     return (

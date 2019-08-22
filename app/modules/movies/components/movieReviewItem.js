@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Image, Dimensions, TouchableOpacity} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {
   Text,
   ListItem,
@@ -9,33 +9,10 @@ import {
   Body,
   Thumbnail,
   Left,
-  Icon,
-  Button,
 } from 'native-base';
-import ViewMoreText from 'react-native-view-more-text';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
+import {toogleText} from '../../commonComponents/movies/textToogle';
 
-export default class movieReviewItem extends Component {
-  constructor(props) {
-    super(props);
-  }
-  renderViewMore(onPress) {
-    return (
-      <Text style={{color: '#0091EA', marginTop: 10}} onPress={onPress}>
-        Read more...
-      </Text>
-    );
-  }
-  renderViewLess(onPress) {
-    return (
-      <Text style={{color: '#0091EA', marginTop: 10}} onPress={onPress}>
-        Read less...
-      </Text>
-    );
-  }
+export default class movieReviewItem extends React.PureComponent {
   render() {
     return (
       <ListItem style={styles.listItem}>
@@ -52,15 +29,7 @@ export default class movieReviewItem extends Component {
             </Left>
           </CardItem>
           <CardItem>
-            <Body>
-              <ViewMoreText
-                numberOfLines={4}
-                renderViewMore={this.renderViewMore}
-                renderViewLess={this.renderViewLess}
-                textStyle={{textAlign: 'justify'}}>
-                <Text>{this.props.data.content}</Text>
-              </ViewMoreText>
-            </Body>
+            <Body>{toogleText(this.props.data.content)}</Body>
           </CardItem>
         </View>
       </ListItem>

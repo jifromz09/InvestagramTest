@@ -35,7 +35,6 @@ class AddRatingModal extends Component {
           bodyValue: this.state.startingValue,
         };
         this.props.rateMovie(params).then(res => {
-            console.log(res)
           res.value.status_code == 12 || res.value.status_code == 1
             ? this.addRatingResult('SUCCESS', 'Movie rating success.')
             : this.addRatingResult('FAILED', 'Failed to rate movie!');
@@ -159,7 +158,6 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
     addRating: state.addRating,
   };

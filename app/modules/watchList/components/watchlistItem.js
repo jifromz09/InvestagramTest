@@ -1,33 +1,13 @@
 import React, {Component} from 'react';
 import {StyleSheet} from 'react-native';
 import {ListItem, View, CardItem, Left, Body, Text} from 'native-base';
-import ViewMoreText from 'react-native-view-more-text';
 import {movieImg} from '../../movies/components/movieImg';
 import {movieTitle} from '../../movies/components/movieTitle';
-import {movieTimeLength} from '../../movies/components/movieLength';
 import {movieRating} from '../../movies/components/ratings';
+import { toogleText } from '../../commonComponents/movies/textToogle';
 
-export default class WatchlistItem extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  renderViewMore(onPress) {
-    return (
-      <Text style={{color: '#0091EA', marginTop: 10}} onPress={onPress}>
-        Read more...
-      </Text>
-    );
-  }
-  renderViewLess(onPress) {
-    return (
-      <Text style={{color: '#0091EA', marginTop: 10}} onPress={onPress}>
-        Read less...
-      </Text>
-    );
-  }
-
-  render() {
+export default class WatchlistItem extends React.PureComponent {
+    render() {
     return (
       <ListItem style={styles.listItem}>
         <View style={styles.container}>
@@ -42,13 +22,7 @@ export default class WatchlistItem extends Component {
           </CardItem>
           <CardItem>
             <Body>
-              <ViewMoreText
-                numberOfLines={3}
-                renderViewMore={this.renderViewMore}
-                renderViewLess={this.renderViewLess}
-                textStyle={{textAlign: 'justify'}}>
-                <Text>{this.props.data.overview}</Text>
-              </ViewMoreText>
+              {toogleText(this.props.data.overview)}
             </Body>
           </CardItem>
         </View>

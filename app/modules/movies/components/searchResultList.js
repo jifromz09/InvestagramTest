@@ -16,12 +16,10 @@ export default class SearchResultList extends PureComponent {
   }
 
   componentDidMount =() =>{
-      console.log(this.props)
+    
   }
 
   static navigationOptions = ({navigation}) => {
-    const params = navigation.state.params || {};
-
     return {
       headerLeft: (
         <TouchableOpacity

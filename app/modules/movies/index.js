@@ -1,6 +1,6 @@
 import {createStackNavigator} from 'react-navigation';
 import {Animated, Easing} from 'react-native';
-import Home from './movieList';
+import Movies from './movieList';
 import MovieDetails from './movieDetails';
 import MovieReviews from './reviews';
 import AddToWatchListModalScreen from './components/addToWatchListModal';
@@ -30,7 +30,7 @@ const config = {
 
 const FeedStack = createStackNavigator(
   {
-    Home,
+    Movies,
     MovieDetails,
     MovieReviews,
     SearchResultList,

@@ -39,7 +39,6 @@ class MovieList extends Component {
   };
 
   showSearchBarFunc = () => {
-    console.log('triggerd');
     this.setState({
       showSearch: !this.state.showSearch,
     });

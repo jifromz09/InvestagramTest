@@ -1,10 +1,9 @@
 import {createStackNavigator} from 'react-navigation';
-import {Animated, Easing} from 'react-native';
-import Home from './watchList';
+import Watchlist from './watchList';
 
 const FeedStack = createStackNavigator(
   {
-    Home,
+    Watchlist,
   }
 );
 
