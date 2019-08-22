@@ -21,8 +21,8 @@ class LoginScreen extends Component {
     super(props);
     this.state = {
       hidePassword: true,
-      password: 'jifromz',
-      username: 'jifromz',
+      password: '',
+      username: '',
     };
   }
 
