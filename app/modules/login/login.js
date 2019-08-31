@@ -1,12 +1,5 @@
 import React, {Component} from 'react';
-import {
-  Text,
-  SafeAreaView,
-  StyleSheet,
-  View,
-  Image,
-  Alert,
-} from 'react-native';
+import {Text, SafeAreaView, StyleSheet, View, Image, Alert} from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Input, Item, Icon, Button, Toast, Root, Spinner} from 'native-base';
@@ -20,10 +13,14 @@ class LoginScreen extends Component {
     super(props);
     this.state = {
       hidePassword: true,
-      password: '',
-      username: '',
+      password: 'jifromz',
+      username: 'jifromz',
     };
   }
+
+  componentDidUpdate = prevProps => {
+    console.log(prevProps);
+  };
 
   userAuth = () => {
     const param = {
@@ -39,7 +36,7 @@ class LoginScreen extends Component {
     if (!param.pword) {
       return Alert.alert('User Login', 'Please input password.');
     }
-    
+
     this.props.userLogin(param).then(res => {
       res.value && res.value.success
         ? this.createSession()
@@ -70,7 +67,7 @@ class LoginScreen extends Component {
         <SafeAreaView style={styles.mainContainer}>
           <View style={styles.logoContiner}>
             <Image
-              source={require("../../assets/img/logo.png")}
+              source={require('../../assets/img/logo.png')}
               style={styles.logo}
             />
           </View>

@@ -87,7 +87,7 @@ class AddToWatchListModalScreen extends Component {
             <Button
               disabled={this.props.addToWatchlist.isSaving}
               onPress={() => this.props.navigation.goBack()}
-              block
+              rounded
               style={[styles.btnStyle, {marginRight: 10}]}>
               <Text style={styles.btnText}>Cancel</Text>
             </Button>
@@ -96,7 +96,7 @@ class AddToWatchListModalScreen extends Component {
               onPress={() => {
                 this.addToWatchlist();
               }}
-              block
+              rounded
               style={[styles.btnStyle, {marginLeft: 10}]}>
               <Text style={styles.btnText}>Continue</Text>
             </Button>
@@ -146,7 +146,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#0091EA',
     width: '45%',
     height: 40,
-    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 });
 

@@ -1,8 +1,10 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
   } from 'react-native-responsive-screen';
+  const deviceWidth = Dimensions.get('window').width;
+  const deviceHeight = Dimensions.get('window').height;
 
 export const styles = StyleSheet.create({
   mainContainer: {
@@ -42,8 +44,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    width: wp('60%'),
-    height: hp('30%'),
+    width: deviceWidth / 2,
+    height: deviceHeight / 3,
   },
   logoContiner: {
     flex: 1,
@@ -57,7 +59,7 @@ export const styles = StyleSheet.create({
     marginTop: 10,
     width: '95%',
     alignSelf: 'center',
-    //backgroundColor: "#039BE5",
+    backgroundColor: "#039BE5",
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,

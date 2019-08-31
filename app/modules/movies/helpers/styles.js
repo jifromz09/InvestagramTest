@@ -7,6 +7,15 @@ const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 
 export const styles = StyleSheet.create({
+  actionlistStyles: {
+    width: '95%',
+    alignSelf: 'center',
+    borderRadius: 10,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#BDBDBD',
+    borderWidth: 1,
+    marginBottom: 10,
+  },
   iconStyles: {
     fontSize: 30,
     color: '#0091EA',
@@ -43,7 +52,7 @@ export const styles = StyleSheet.create({
   imgStyle: {
     width: deviceWidth / 4,
     height: deviceHeight / 5,
-    borderRadius: 5
+    borderRadius: 5,
     // aspectRatio: 1,
   },
   btnContainer: {
@@ -54,7 +63,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     // backgroundColor: 'red',
     paddingTop: 5,
-    marginBottom: 10
+    marginBottom: 10,
   },
   containerStyle: {backgroundColor: '#ffffff'},
 });

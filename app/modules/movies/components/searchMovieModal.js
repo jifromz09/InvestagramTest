@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {View, Image, StyleSheet, Alert} from 'react-native';
-import {Button, Text, Icon, Form, Input, Item} from 'native-base';
+import {View, Image, StyleSheet, Alert, TouchableOpacity} from 'react-native';
+import {Text, Icon, Form, Input, Item} from 'native-base';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -22,10 +22,10 @@ class SearchMovieModalScreen extends Component {
   }
 
   componentDidMount = () => {};
-  
 
   searchMovie = () => {
-    if(!this.state.keyword) return Alert.alert('INVALID SEARCH', 'Please input keyword!');
+    if (!this.state.keyword)
+      return Alert.alert('INVALID SEARCH', 'Please input keyword!');
     this.setState(
       {
         showLoader: true,
@@ -38,7 +38,9 @@ class SearchMovieModalScreen extends Component {
         };
         this.props.searchMovieRequest(params).then(res => {
           res.value && res.value.results.length
-            ? this.props.navigation.navigate('SearchResultList', {movies: res.value.results})
+            ? this.props.navigation.navigate('SearchResultList', {
+                movies: res.value.results,
+              })
             : this.searchMovieResult('SEARCH', 'No movie(s) found!');
         });
       },
@@ -62,52 +64,20 @@ class SearchMovieModalScreen extends Component {
     return (
       <View style={styles.main}>
         <View style={styles.body}>
-          <View style={styles.imgContainer}>
-            <Icon
-              ios="ios-search"
-              android="md-search"
-              style={styles.iconStyles}
-            />
-          </View>
           {!this.props.movieSearch.isFetching && !this.state.showLoader && (
             <Form style={styles.titleContainer}>
-              <Item
-                style={{
-                  paddingLeft: 5,
-                  marginLeft: 5,
-                  marginRight: 5,
-                  paddingRight: 5,
-                  paddingBottom: 0,
-                  marginBottom: 0,
-                  paddingTop: 0,
-                  marginTop: 0,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
+              <Item style={styles.inputContainer}>
                 <Input
-                  placeholder="Keyword"
+                  placeholder="Movie title or Keyword"
                   onChangeText={text => {
                     this.setState({
                       keyword: text,
                     });
                   }}
+                  style={styles.input}
                 />
               </Item>
-              <Item
-                style={{
-                  paddingLeft: 5,
-                  marginLeft: 5,
-                  marginRight: 5,
-                  paddingRight: 5,
-                  paddingBottom: 0,
-                  marginBottom: 0,
-                  paddingTop: 0,
-                  marginTop: 0,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: 10,
-                }}
-                last>
+              <Item style={[{marginBottom: 10}, styles.inputContainer]} last >
                 <Input
                   placeholder="Year"
                   keyboardType={'number-pad'}
@@ -116,6 +86,7 @@ class SearchMovieModalScreen extends Component {
                       year: text,
                     });
                   }}
+                  style={styles.input}
                 />
               </Item>
             </Form>
@@ -126,22 +97,20 @@ class SearchMovieModalScreen extends Component {
             </View>
           )}
           <View style={styles.btnContainer}>
-            <Button
+            <TouchableOpacity
               disabled={this.props.movieSearch.isFetching}
               onPress={() => this.props.navigation.goBack()}
-              block
               style={[styles.btnStyle, {marginRight: 10}]}>
               <Text style={styles.btnText}>Cancel</Text>
-            </Button>
-            <Button
+            </TouchableOpacity>
+            <TouchableOpacity
               disabled={this.props.movieSearch.isFetching}
               onPress={() => {
                 this.searchMovie();
               }}
-              block
               style={[styles.btnStyle, {marginLeft: 10}]}>
               <Text style={styles.btnText}>Continue</Text>
-            </Button>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -160,13 +129,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.5)',
     justifyContent: 'center',
+    alignItems: 'center',
   },
-  btnText: {fontSize: hp('1.8%')},
+  btnText: {fontSize: 15, fontWeight: '500', color: '#0091EA'},
   body: {
+    borderRadius: 8,
     position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
+    alignSelf: 'center',
+    width: '95%',
     height: 200,
     flex: 1,
     backgroundColor: '#FFFFFF',
@@ -174,7 +144,7 @@ const styles = StyleSheet.create({
   },
   imgContainer: {
     flex: 0.6,
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     alignItems: 'center',
   },
   titleContainer: {
@@ -190,10 +160,26 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   btnStyle: {
-    backgroundColor: '#0091EA',
     width: '45%',
     height: 40,
-    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#FFFFFF',
+  },
+  input: {
+    fontSize: 15,
+  },
+  inputContainer: {
+    paddingLeft: 5,
+    marginLeft: 5,
+    marginRight: 5,
+    paddingRight: 5,
+    paddingBottom: 0,
+    marginBottom: 0,
+    paddingTop: 0,
+    marginTop: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

@@ -8,6 +8,7 @@ import {
   CardItem,
   ListItem,
   Icon,
+  List,
   Left,
   Body,
   View,
@@ -19,17 +20,13 @@ import {TouchableOpacity, Alert} from 'react-native';
 import CustomSpinner from '../commonComponents/spinner/spinner';
 import {fetchMovieDetails} from '../../actions/movies/movieDetailsActions';
 import {styles} from './helpers/styles';
-import {Rating, AirbnbRating} from 'react-native-ratings';
 import {movieTitle} from './components/movieTitle';
 import {movieImg} from './components/movieImg';
 import {movieOverview} from './components/movieOverview';
 import {movieGenres} from './components/genres';
 import {movieRating} from './components/ratings';
 import {movieTimeLength} from './components/movieLength';
-import {addToWatchlistBtn} from './components/addToWatchListBtn';
-import {reviewsBtn} from './components/reviewsBtn';
-import {deleteRatingBtn} from './components/deleteRatingBtn';
-import {rateMovieBtn} from './components/rateMovieBtn';
+import {movieListItem} from './components/movieActionsLisItem';
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -87,6 +84,12 @@ class MovieDetails extends Component {
     });
   };
 
+  navigateToReviews = () => {
+    this.props.navigation.navigate('MovieReviews', {
+      movie: this.props.movieDetails.movieDetails,
+    });
+  };
+
   render = () => {
     return (
       <Container>
@@ -123,15 +126,22 @@ class MovieDetails extends Component {
                   {movieGenres(this.props.movieDetails.movieDetails)}
                 </CardItem>
               </View>
-              <View style={styles.btnContainer}>
-                {rateMovieBtn(this.rateMovie)}
-                {addToWatchlistBtn(this.addToWatchList)}
-                {deleteRatingBtn(this.deleteMovieRating)}
-                {reviewsBtn({
-                  movie: this.props.movieDetails.movieDetails,
-                  nav: this.props.navigation,
+              <List
+                style={styles.actionlistStyles}>
+                {movieListItem({do: this.rateMovie, title: 'Rate Movie'})}
+                {movieListItem({
+                  do: this.addToWatchList,
+                  title: 'Add to Watchlist',
                 })}
-              </View>
+                {movieListItem({
+                  do: this.deleteMovieRating,
+                  title: 'Delete Rating',
+                })}
+                {movieListItem({
+                  do: this.navigateToReviews,
+                  title: 'Movie Reviews',
+                })}
+              </List>
             </View>
           )}
         </Content>

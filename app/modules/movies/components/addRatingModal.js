@@ -65,7 +65,7 @@ class AddRatingModal extends Component {
     return (
       <View style={styles.main}>
         <View style={styles.body}>
-          <Text style={styles.movieTitle}>Add Rating</Text>
+          <Text style={styles.movieTitle}>Add Movie Rating</Text>
           {!this.props.addRating.isSaving && !this.state.showLoader && (
             <View style={styles.titleContainer}>
               <AirbnbRating
@@ -92,7 +92,7 @@ class AddRatingModal extends Component {
             <Button
               disabled={this.props.addRating.isSaving}
               onPress={() => this.props.navigation.goBack()}
-              block
+              rounded
               style={[styles.btnStyle, {marginRight: 10}]}>
               <Text style={styles.btnText}>Cancel</Text>
             </Button>
@@ -101,7 +101,7 @@ class AddRatingModal extends Component {
               onPress={() => {
                 this.addRating();
               }}
-              block
+              rounded
               style={[styles.btnStyle, {marginLeft: 10}]}>
               <Text style={styles.btnText}>Continue</Text>
             </Button>
@@ -115,7 +115,7 @@ class AddRatingModal extends Component {
 const styles = StyleSheet.create({
   votes: {fontSize: hp('1.9%')},
   txtMsg: {fontSize: 15, fontWeight: '500'},
-  movieTitle: {fontSize: 15, fontWeight: 'bold', marginTop: 5},
+  movieTitle: {fontSize: 15, fontWeight: 'bold', marginTop: 10},
   main: {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.5)',
@@ -153,7 +153,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#0091EA',
     width: '45%',
     height: 40,
-    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
 });
 
